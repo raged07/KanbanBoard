@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
     <script src="/app.js"></script>
     <title>Kanban</title>
@@ -11,7 +12,7 @@
 <body>
     <p></p>
     <div ng-controller="KanbanController as KC"> <!--as asigna un alias al controlador-->
-        <h3>Kanban Board</h3>
+        <h1>Kanban Board</h1>
         <form ng-submit='KC.addTask()'>
             <span>Name</span>
             <input type="text" ng-model="newObj.name">
@@ -19,21 +20,30 @@
             <input type="text" ng-model="newObj.description">
             <input type="submit" value="Add">
             <ul>
-                <h3>TO DO</h3>
-               <li ng-repeat="task in KC.tasks | filter:{status:1}" > 
-                    <span>{{task.name}}</span>
-                    <button ng-click='KC.updateStatus(task.index);'>Next</button>
-                </li>
-                <h3>DOING</h3>
-                <li ng-repeat="task in KC.tasks | filter:{status:2}" > 
-                    <span>{{task.name}}</span>
-                    <button ng-click='KC.updateToPrev(task.index)'>Prev</button>
-                    <button ng-click='KC.updateStatus(task.index);'>Next</button>
-                </li>
-                <h3>DONE</h3>
-                <li ng-repeat="task in KC.tasks | filter:{status:3}" > 
-                    <span>{{task.name}}</span>
-                </li>
+                <div class="todo">
+                    <h3>TO DO</h3>
+                    <li ng-repeat="task in KC.tasks | filter:{status:1}" > 
+                        <span>Name: {{task.name}}</span>
+                        <span>Description: {{task.description}}</span>
+                        <button ng-click='KC.updateStatus(task.index);'>Next</button>
+                    </li>
+                </div>
+                <div class="doing">
+                    <h3>DOING</h3>
+                    <li ng-repeat="task in KC.tasks | filter:{status:2}" > 
+                            <span>Name: {{task.name}}</span>
+                            <span>Description: {{task.description}}</span>
+                        <button ng-click='KC.updateToPrev(task.index)'>Prev</button>
+                        <button ng-click='KC.updateStatus(task.index);'>Next</button>
+                    </li>
+                </div>
+                <div class="done">
+                    <h3>DONE</h3>
+                    <li ng-repeat="task in KC.tasks | filter:{status:3}" > 
+                            <span>Name: {{task.name}}</span>
+                            <span>Description: {{task.description}}</span>
+                    </li>
+                </div>
             </ul>
         </form>
         

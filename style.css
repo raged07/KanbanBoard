@@ -1,0 +1,21 @@
+ul{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+}
+.todo, .doing, .done{
+    border: black solid;
+    width: 90%;
+}
+li{
+    list-style: none;
+    height: 50px;
+    padding: 5px;
+    margin: 5px;
+    background-color: rgb(199, 223, 255);
+}
+h3{
+    text-align: center;
+}
+ul span{
+    display: block;
+}
